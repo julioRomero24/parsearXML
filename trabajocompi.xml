@@ -1,0 +1,28 @@
+﻿
+
+<autos>
+    <auto>
+        <nombreAuto > rio</nombreAuto>
+        <marca>kia</marca>
+        <año>2015</año>
+        <transmision>Manual</transmision>
+        <color>rojo</color>
+    </auto>
+    <auto2>
+        <nombreAuto >sandero</nombreAuto>
+        <marca>renault</marca>
+        <año>2019</año>
+        <transmision>Automatica</transmision>
+        <color>amarillo</color>
+    </auto2>
+    <auto3>
+        <nombreAuto>logan</nombreAuto>
+        <marca>renault</marca>
+        <año>2021</año>
+        <transmision>Manual</transmision>
+        <color>verde</color>
+        <modosDeManejo>sport</modosDeManejo>
+
+    </auto3>
+
+</autos>
