@@ -1,4 +1,5 @@
 
+from enum import auto
 from tkinter import Tk
 
 from interfaz import Interfaz
@@ -7,7 +8,7 @@ from auto import Auto
 from autoLogan import AutoLogan
 
 import xml.etree.ElementTree as ET
-from carpeta import Concesionario
+from carpeta import ArbolDeAutos
 
 def parsearXML():
     mytree=ET.parse('trabajocompi.xml')
@@ -19,24 +20,7 @@ def extraerDelXMl(x,y):
     return parsearXML()[x][y].text
     
         
-def crearAutoPruebaBorrarSiSaleMal():
-    array1=[]
-    array2=[]
-    index2=0
-    index=0
-    for x in [0,1,2]:
-        
-        for y in [0,1,2,3,4]:
-            array1.insert(index,extraerDelXMl(x,y)) 
-            index+=1
 
-    for yy in [1,2,3]:
-        for zz in [1,2,3,4,5]:            
-            array2.insert(index2,array1)
-            
-    print('->>>><',array2[1])    
-
-    
 
        
              
@@ -73,20 +57,46 @@ def  mostrarAutos(autos):
         print(x.toString())
         
     
+def  mostrarArbol(arbolAutos,autos):
+ 
+    
+    print(type(autos[2]))
+    for x in range(0,len(autos)):
+        arbolAutos.insertarNombreSubCarpeta(autos[x].getNombre())
+        arbolAutos.insertarMarcaDeAuto(autos[x].getMarca())
+        arbolAutos.insertarAño(autos[x].getAño())
+        arbolAutos.insertarTipoDETrasmicion(autos[x].getTransmision())
+        
+        if(isinstance(autos[x], AutoLogan)):
+            arbolAutos.insertarModoDeManejo(autos[x].getModoDeManejo())
+
+    arbolAutos.mostrarArbol()
+
+
+   # ventana.mostrarArbol(autos[0].getNombre(),autos[0].getMarca(),autos[0].getAño(),autos[0].getTransmision())
+    #ventana.mostrarArbol(autos[1].getNombre(),autos[1].getMarca(),autos[1].getAño(),autos[1].getTransmision())
+
+   
 
 class main:
     ventanaPrincipal=Tk()
-    parser=Interfaz(ventanaPrincipal)
+
+    #parser=Interfaz(ventanaPrincipal)
     ##crearAutoPruebaBorrarSiSaleMal()
     autos=crearAuto()
     
-    #--------------------
     
-    app = Concesionario(ventanaPrincipal)
+    #--------------------
+   #arbolAutos=ArbolDeAutos(ventanaPrincipal)
+
+    arbolAutos=ArbolDeAutos(ventanaPrincipal)
+   
+    mostrarArbol(arbolAutos,autos)
+    
     #app.mainloop()
     
-    #----------------
-    mostrarAutos(autos)
+    #----------------n
+    #mostrarAutos(autos)
     
 
     ventanaPrincipal.mainloop()
