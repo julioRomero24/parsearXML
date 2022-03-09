@@ -97,8 +97,8 @@ class main:
     
     #----------------n
     #mostrarAutos(autos)
-    
 
+    
     ventanaPrincipal.mainloop()
 
 

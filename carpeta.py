@@ -2,38 +2,37 @@
 from asyncio.windows_events import NULL
 
 import tkinter as tk
-from tkinter import ttk
+from tkinter import BOTH, ttk
 
 class ArbolDeAutos(ttk.Frame):
     
     def __init__(self, ventana):
         
         super().__init__(ventana)
-        ventana.title("Concesionario de automóviles")
+        ventana.title("Explorador de automóviles")
         #v.iconbitmap(r"C:\Users\jucer\OneDrive\Escritorio\Parser\carpetIMG.ico")
-        #ventana.geometry("600x1024")
-       
+        ventana.geometry("400x400")
+        ventana.iconbitmap(r"C:\Users\WALTER\Downloads\explorador (2).ico")
+        self.icono=tk.PhotoImage(file="folder.png")
+        self.icono2=tk.PhotoImage(file="file.png")
         self.treeview = ttk.Treeview(self)
-        self.Carpeta = self.treeview.insert("", tk.END, text="Coches")
+        self.Carpeta = self.treeview.insert("", tk.END, text="Coches",image=self.icono)
         
-        
-
-    
 
     def insertarNombreSubCarpeta(self,nombre):
-        self.coche= self.treeview.insert(self.Carpeta, tk.END, text=nombre)
+        self.coche= self.treeview.insert(self.Carpeta, tk.END, text=nombre,image=self.icono)
     
     def insertarMarcaDeAuto(self,marca):
-        self.treeview.insert(self.coche, tk.END, text=marca)
+        self.treeview.insert(self.coche, tk.END, text=marca,image=self.icono2)
     
     def insertarAño(self,año):
-        self.treeview.insert(self.coche, tk.END, text=año)
+        self.treeview.insert(self.coche, tk.END, text=año,image=self.icono2)
     
     def insertarTipoDETrasmicion(self,transmision):
-        self.treeview.insert(self.coche, tk.END, text=transmision)
+        self.treeview.insert(self.coche, tk.END, text=transmision,image=self.icono2)
 
     def insertarModoDeManejo(self,modoManejo):
-        self.treeview.insert(self.coche, tk.END, text=modoManejo)
+        self.treeview.insert(self.coche, tk.END, text=modoManejo,image=self.icono2)
 
 
     
@@ -54,5 +53,5 @@ class ArbolDeAutos(ttk.Frame):
         #self.treeview.insert(Coche3, tk.END, text="Año")
 
     def mostrarArbol(self): 
-        self.treeview.pack()
-        self.pack()
+        self.treeview.pack(fill = BOTH, expand = True)
+        self.pack(fill = BOTH, expand = True)
